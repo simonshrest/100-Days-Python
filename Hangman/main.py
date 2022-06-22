@@ -2,6 +2,7 @@
 import random
 import hangman_art
 import hangman_words
+import clear
 
 print(hangman_art.logo)
 
@@ -31,6 +32,8 @@ guess_list = []
   #e.g. If the user guessed "p" and the chosen word was "apple", then display should be ["_", "p", "p", "_", "_"].
 while not end_of_game:
   guess = input("\nGuess a letter: ").lower()
+  #Clear the screen after guess.
+  clear()
 #Insert guessed letters in a list guess_list and check for reoccurrence. 
   if guess in guess_list:
       print("You have already guessed this letter.")
