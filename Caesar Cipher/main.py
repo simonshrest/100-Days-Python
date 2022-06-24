@@ -19,13 +19,23 @@ shift = int(input("Type the shift number:\n"))
     ##🐛Bug alert: What happens if you try to encode the word 'civilization'?🐛
 
 def encrypt(text,shift):
-  if direction == "encode".lower():
-    encoded_pw = []
-    for letter in text:        
-      encoded_pw += alphabet[alphabet.index(letter) + shift]
+  encoded_pw = []
+  for letter in text:        
+    encoded_pw += alphabet[alphabet.index(letter) + shift]
   encoded_text = "".join(encoded_pw)
   print(f"The encoded text is {encoded_text}.")
 
+def decrypt(text,shift):
+  decoded_pw = []
+  for letter in text:        
+    decoded_pw += alphabet[alphabet.index(letter) - shift]
+  decoded_text = "".join(decoded_pw)
+  print(f"The decoded text is {decoded_text}.")
+
+
 #TODO-3: Call the encrypt function and pass in the user inputs. You should be able to test the code and encrypt a message. 
 
-encrypt(text,shift)
+if direction == "encode".lower():
+  encrypt(text,shift)
+else:
+  decrypt(text,shift)
