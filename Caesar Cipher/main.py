@@ -4,38 +4,22 @@ direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n").lower
 text = input("Type your message:\n").lower()
 shift = int(input("Type the shift number:\n"))
 
-#TODO-1: Create a function called 'encrypt' that takes the 'text' and 'shift' as inputs.
-  
-    #TODO-2: Inside the 'encrypt' function, shift each letter of the 'text' forwards in the alphabet by the shift amount and print the encrypted text.  
-    #e.g. 
-    #plain_text = "hello"
-    #shift = 5
-    #cipher_text = "mjqqt"
-    #print output: "The encoded text is mjqqt"
+#TODO-1: Combine the encrypt() and decrypt() functions into a single function called caesar(). 
 
-    ##HINT: How do you get the index of an item in a list:
-    #https://stackoverflow.com/questions/176918/finding-the-index-of-an-item-in-a-list
+def caesar(text, shift, direction):
+  if direction == "encode".lower():
+    encoded_pw = []
+    for letter in text:        
+      encoded_pw += alphabet[alphabet.index(letter) + shift]
+    encoded_text = "".join(encoded_pw)
+    print(f"The encoded text is {encoded_text}.")
 
-    ##🐛Bug alert: What happens if you try to encode the word 'civilization'?🐛
-
-def encrypt(text,shift):
-  encoded_pw = []
-  for letter in text:        
-    encoded_pw += alphabet[alphabet.index(letter) + shift]
-  encoded_text = "".join(encoded_pw)
-  print(f"The encoded text is {encoded_text}.")
-
-def decrypt(text,shift):
-  decoded_pw = []
-  for letter in text:        
-    decoded_pw += alphabet[alphabet.index(letter) - shift]
-  decoded_text = "".join(decoded_pw)
-  print(f"The decoded text is {decoded_text}.")
-
-
-#TODO-3: Call the encrypt function and pass in the user inputs. You should be able to test the code and encrypt a message. 
-
-if direction == "encode".lower():
-  encrypt(text,shift)
-else:
-  decrypt(text,shift)
+  else:
+    decoded_pw = []
+    for letter in text:        
+      decoded_pw += alphabet[alphabet.index(letter) - shift]
+    decoded_text = "".join(decoded_pw)
+    print(f"The decoded text is {decoded_text}.")
+    
+#TODO-2: Call the caesar() function, passing over the 'text', 'shift' and 'direction' values.
+caesar(text, shift, direction)
